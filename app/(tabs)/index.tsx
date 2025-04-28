@@ -1,5 +1,7 @@
-import { Image, StyleSheet, Platform, View, Text } from 'react-native';
+import {  StyleSheet, View, Text } from 'react-native';
 import params from './params'
+import Field from './componentes/field'
+
 
 export default function HomeScreen() {
   return (
@@ -8,6 +10,7 @@ export default function HomeScreen() {
       <Text style={styles.instructions}>Tamanho da grade: 
         {params.getRowsAmount()}x{params.getColumns()}
       </Text>
+      <Field></Field>
     </View>
   );
 }
