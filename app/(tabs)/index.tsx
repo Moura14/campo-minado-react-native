@@ -11,6 +11,11 @@ export default function HomeScreen() {
         {params.getRowsAmount()}x{params.getColumns()}
       </Text>
       <Field></Field>
+      <Field opended></Field>
+      <Field opended nearMines={1}></Field>
+      <Field opended nearMines={2}></Field>
+      <Field opended nearMines={3}></Field>
+      <Field opended nearMines={6}></Field>
     </View>
   );
 }
