@@ -18,6 +18,8 @@ export default function HomeScreen() {
       <Field opended nearMines={6}></Field>
       <Field mined opended></Field>
       <Field mined opended exploded></Field>
+      <Field flagged></Field>
+      <Field flagged opended></Field>
     </View>
   );
 }
