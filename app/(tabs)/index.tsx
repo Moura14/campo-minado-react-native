@@ -3,6 +3,7 @@ import params from './params'
 import Field from './componentes/field'
 
 
+
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
@@ -10,7 +11,7 @@ export default function HomeScreen() {
       <Text style={styles.instructions}>Tamanho da grade: 
         {params.getRowsAmount()}x{params.getColumns()}
       </Text>
-      <Field></Field>
+       <Field></Field>
       <Field opended></Field>
       <Field opended nearMines={1}></Field>
       <Field opended nearMines={2}></Field>
@@ -19,7 +20,8 @@ export default function HomeScreen() {
       <Field mined opended></Field>
       <Field mined opended exploded></Field>
       <Field flagged></Field>
-      <Field flagged opended></Field>
+      <Field flagged opended></Field> 
+      
     </View>
   );
 }
