@@ -16,8 +16,8 @@ const createBoard = (row, columns) => {
 
 
 const spredMines = (board, minesAmount) => {
-    const rows = board.lenght
-    const columns = board[0].lenght
+    const rows = board.length
+    const columns = board[0].length
     let minesPlanted = 0
     while(minesPlanted < minesAmount){
         const rowsSel = parseInt(Math.random() * rows, 10)

@@ -1,46 +1,55 @@
-import {  StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native'
 import params from './params'
-import Field from './componentes/field'
+import MineField from './componentes/mineField'
+import { createMineBoard } from './functions'
+import { Component } from 'react'
 
+interface AppState {
+  board: any[][] 
+}
 
+export default class App extends Component<{}, AppState> {
+  constructor(props: {}) {
+    super(props)
+    this.state = this.createState()
+  }
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Iniciando o Mines!</Text>
-      <Text style={styles.instructions}>Tamanho da grade: 
-        {params.getRowsAmount()}x{params.getColumns()}
-      </Text>
-       <Field></Field>
-      <Field opended></Field>
-      <Field opended nearMines={1}></Field>
-      <Field opended nearMines={2}></Field>
-      <Field opended nearMines={3}></Field>
-      <Field opended nearMines={6}></Field>
-      <Field mined opended></Field>
-      <Field mined opended exploded></Field>
-      <Field flagged></Field>
-      <Field flagged opended></Field> 
-      
-    </View>
-  );
+  minesAmount = () => {
+    const cols = params.getColumns()
+    const rows = params.getRowsAmount()
+    return Math.ceil(cols * rows * params.difficultLevel)
+  }
+
+  createState = (): AppState => {
+    const cols = params.getColumns()
+    const rows = params.getRowsAmount()
+    return {
+      board: createMineBoard(rows, cols, this.minesAmount())
+    }
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Iniciando o Mines!</Text>
+        <Text>Tamanho da grade: 
+          {params.getRowsAmount()}x{params.getColumns()}
+        </Text>
+        <View style={styles.board}>
+          <MineField board={this.state.board} />
+        </View>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
- container: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#F5FCFF'
- },
- welcome: {
-  fontSize: 20,
-  textAlign: 'center',
-  margin: 10,
- },
- instructions: {
-  fontSize: 15,
-  textAlign: 'center',
-  margin: 10,
- }
-});
+  container: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  board: {
+    alignItems: 'center',
+    backgroundColor: '#AAA'
+  }
+})
